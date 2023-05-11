@@ -42,13 +42,56 @@
 		</dependency>
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>oracle-public</id>
+			<url>https://maven.oracle.com/public</url>
+		</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>dp3why.inst.InstApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>oracle-releases</id>
+			<repositories>
+				<repository>
+					<id>oracle-releases</id>
+					<url>https://maven.oracle.com</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 
 </project>

@@ -1,6 +1,7 @@
 package dp3why.inst.Service;
 
 import dp3why.inst.Entity.Post;
+import dp3why.inst.Entity.Users;
 import dp3why.inst.Repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class PostService {
 
     // fina raw Post: without userName
     public ArrayList<Post> retrieveAll(){
-        return postRepo.findAll();
+        return  postRepo.findAll();
     }
 
 
@@ -39,7 +40,11 @@ public class PostService {
                     userService.displayUserMetaData(postItem.getUserId())
                             .getUserName()
             );
+
         }
+
+
+
         postList.sort((a, b) -> b.getId() - a.getId());
         return postList;
     }

@@ -1,8 +1,6 @@
 package dp3why.inst.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 @Entity(name = "Post")
@@ -11,6 +9,7 @@ public class Post {
     @GeneratedValue
     private int id;
     private String postId;
+
     private String userId;
 
     private String userName;
@@ -19,6 +18,7 @@ public class Post {
     private Timestamp timestamp;
 
     private String likeCount;
+
 
     public Post() {
         super();
@@ -84,8 +84,9 @@ public class Post {
     public String getLikeCount() {
         return likeCount;
     }
-
     public void setLikeCount(String likeCount) {
         this.likeCount = likeCount;
     }
+
+
 }

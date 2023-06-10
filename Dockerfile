@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Use a lightweight JDK base image for the application
-FROM openjdk:17-jre-slim
+FROM eclipse-temurin:17-jdk-alpine
 
 # Set the working directory
 WORKDIR /app
@@ -28,4 +28,5 @@ EXPOSE 8080
 
 # Define the command to run the application
 CMD ["java", "-jar", "app.jar"]
+
 

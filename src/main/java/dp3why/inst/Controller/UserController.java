@@ -22,7 +22,7 @@ public class UserController {
 
 	@GetMapping("/{userid}")
 	private Users getUserDetails(@PathVariable("userid") String userId) {
-		return userService.displayUserMetaData(userId);
+		return userService.getUserMetaData(userId);
 	}
 
 	@GetMapping("")
@@ -30,9 +30,14 @@ public class UserController {
 		return userService.getUsers();
 	}
 
-	@DeleteMapping("/delete/{userId}")
-	private void deleteStatus(@PathVariable String userId) {
-		userService.deleteUser(Integer.parseInt(userId));
+	@DeleteMapping("/delete/id/{id}")
+	private void deleteUserByUid(@PathVariable int id) {
+		userService.deleteUserById(id);
+	}
+
+	@DeleteMapping("/delete/uid/{uid}")
+	private void deleteUserById(@PathVariable String uid) {
+		userService.deleteUserByUserId(uid);
 	}
 
 

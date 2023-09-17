@@ -32,7 +32,7 @@ public class CommentService {
         ArrayList<Comments> commentList = commentRepo.findAllByPostId(postId);
 
         for (Comments commentItem : commentList) {
-            commentItem.setUserName(userService.displayUserMetaData(commentItem.getUserId())
+            commentItem.setUserName(userService.getUserMetaData(commentItem.getUserId())
                     .getUserName()
             );
         }

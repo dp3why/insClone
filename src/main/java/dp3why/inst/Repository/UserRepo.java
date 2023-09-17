@@ -6,9 +6,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepo extends CrudRepository<Users, Integer> {
-    Users findByUserId(String userId);
 
+    Users findByUid(String userId);
+    Users findById(int id);
 
+    void deleteByUid(String userId);
+    void deleteById(int id);
 
 }
 

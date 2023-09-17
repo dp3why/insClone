@@ -3,10 +3,18 @@ package dp3why.inst.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 
 @Entity(name = "Comments")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Comments {
     @Id
     @GeneratedValue
@@ -18,74 +26,4 @@ public class Comments {
     private String postId;
     private Timestamp timestamp;
     private String comment;
-
-    public Comments (){
-        super();
-    }
-
-    public Comments(int id, String commentId, String userId, String userName, String postId, Timestamp timestamp, String comment) {
-        this.id = id;
-        this.commentId = commentId;
-        this.userId = userId;
-        this.userName = userName;
-        this.postId = postId;
-        this.timestamp = timestamp;
-        this.comment = comment;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(String commentId) {
-        this.commentId = commentId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

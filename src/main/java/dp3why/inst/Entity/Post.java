@@ -1,92 +1,35 @@
 package dp3why.inst.Entity;
 
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.sql.Timestamp;
+import java.util.List;
+
 @Entity(name = "Post")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Post {
     @Id
     @GeneratedValue
     private int id;
-    private String postId;
 
+    @Column(unique = true)
+    private String postId;
+    private String postText;
+
+    @Column(updatable = false)
     private String userId;
 
-    private String userName;
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "uid")
+    private Users user;
 
     private String postPath;
     private Timestamp timestamp;
-
-    private String likeCount;
-
-
-    public Post() {
-        super();
-    }
-
-    public Post(int id, String postId, String userId, String postPath, Timestamp timestamp, String likeCount) {
-        this.id = id;
-        this.postId = postId;
-        this.userId = userId;
-        this.postPath = postPath;
-        this.timestamp = timestamp;
-        this.likeCount = likeCount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPostPath() {
-        return postPath;
-    }
-
-    public void setPostPath(String postPath) {
-        this.postPath = postPath;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getLikeCount() {
-        return likeCount;
-    }
-    public void setLikeCount(String likeCount) {
-        this.likeCount = likeCount;
-    }
-
-
+    private int likeCount;
 }

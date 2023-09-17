@@ -15,16 +15,32 @@ public class UserService {
         return user;
     }
 
-    public Users displayUserMetaData(String userId) {
-        return userRepo.findByUserId(userId);
+    public Users getUserMetaData(String uid) {
+        return userRepo.findByUid(uid);
+    }
+
+    public Users getUserById(int userId) {
+        return userRepo.findById(userId);
+    }
+
+    public Users getUserByUid(String uid) {
+        return userRepo.findByUid(uid);
     }
 
     public ArrayList<Users> getUsers() {
         return (ArrayList<Users>) userRepo.findAll();
     }
 
-    public void deleteUser(int id){
-        userRepo.deleteById(id);
+    public void deleteUserByUserId(String uid){
+        userRepo.deleteByUid(uid);
     }
+
+    public void deleteUserById(int userId){
+        if (userRepo.findById(userId) == null) {
+            return;
+        }
+        userRepo.deleteById(userId);
+    }
+
 
 }

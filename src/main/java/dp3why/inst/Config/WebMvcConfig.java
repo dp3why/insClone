@@ -9,11 +9,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(
+                        "*",
                         "https://lambent-praline-ebd115.netlify.app",
-                        "http://localhost")
-                .allowedMethods(
-                "GET", "POST", "PUT", "DELETE"
-        );
+                        "http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
 

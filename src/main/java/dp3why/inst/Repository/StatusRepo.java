@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface StatusRepo extends CrudRepository<Status, Integer> {
-    Status findByStatusId(String statusId);
+    Status findById(int statusId);
     ArrayList<Status> findAll();
+    void deleteById(int statusId);
 }

@@ -21,15 +21,15 @@ public class StatusService {
         ArrayList<Status> statusList = statusRepo.findAll();
         for (Status statusItem : statusList) {
             statusItem.setUserName(
-                    userService.displayUserMetaData(statusItem.getUserId())
+                    userService.getUserMetaData(statusItem.getUserId())
                             .getUserName()
             );
         }
         return statusList;
     }
 
-    public Status findSingleStatus(String statusId) {
-        return statusRepo.findByStatusId(statusId);
+    public Status findSingleStatus(int statusId) {
+        return statusRepo.findById(statusId);
     }
     public ArrayList<Status> getAllStatus(){
 

@@ -27,7 +27,7 @@ public class StatusController {
     }
 
     @GetMapping("/{statusId}")
-    private Status singleStatus(@PathVariable("statusId") String statusId) {
+    private Status singleStatus(@PathVariable("statusId") int statusId) {
         return statusService.findSingleStatus(statusId);
     }
 
@@ -38,8 +38,8 @@ public class StatusController {
     }
 
     @DeleteMapping("/delete/{statusId}")
-    public void deleteStatus(@PathVariable String statusId) {
-        statusService.deleteStatus(Integer.parseInt(statusId));
+    public void deleteStatus(@PathVariable int statusId) {
+        statusService.deleteStatus(statusId);
     }
 }
 

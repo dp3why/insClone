@@ -17,6 +17,9 @@ public class CommentService {
     UserService userService;
 
     public Comments submitCommentToDB(Comments comment) {
+        if (comment.getComment().length() == 0) {
+            return null;
+        }
         return commentRepo.save(comment);
     }
 
@@ -40,8 +43,13 @@ public class CommentService {
         return commentList;
     }
 
-    public void deleteComment(int commentId){
+    public Boolean deleteComment(int commentId){
+        Comments comment = commentRepo.findById(commentId).orElse(null);
+        if (comment == null) {
+            return false;
+        }
         commentRepo.deleteById(commentId);
+        return true;
     }
 
 
